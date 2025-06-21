@@ -12,7 +12,7 @@ This project displays a ToDo list that adds new ToDo events after clicking on th
 
 ## Technology
 
-In this project we use HTML, CSS, JavaScript to make it all come together. For example in the HTML we have a script tag that connects our JavaScript files to the webpage. In the JavaScript files weve refactored the code for easier accesibility with different files that pertain to a certain element used in the application. The simpler it is for a software engineer to read the better!
+In this project we use HTML, CSS, JavaScript to make it all come together. For example in the HTML we have a script tag that connects our JavaScript files to the webpage. In the JavaScript files we've refactored the code for easier accesibility with different files that pertain to a certain element used in the application. The simpler it is for a software engineer to read the better!
 
 ## Deployment
 
