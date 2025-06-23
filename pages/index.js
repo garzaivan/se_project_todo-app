@@ -7,7 +7,7 @@ import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 const todoCounterEl = document.querySelector(".counter__text");
@@ -20,7 +20,6 @@ const openModal = (modal) => {
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
   document.removeEventListener("keydown", handleEscape);
-  newTodoValidator.resetValidation();
 };
 
 function handleEscape(evt) {
@@ -49,7 +48,6 @@ addTodoForm.addEventListener("submit", (evt) => {
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
 
-  // Create a date object and adjust for timezone
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
@@ -58,7 +56,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   const todo = generateTodo(values);
   todosList.append(todo);
   closeModal(addTodoPopup);
-  addTodoForm.reset();
+  newTodoValidator.resetValidation();
   updateTodoCounts();
 });
 
@@ -88,9 +86,13 @@ todosList.addEventListener("click", (evt) => {
   }
 });
 
-initialTodos.forEach((item) => {
+const renderTodo = (item) => {
   const todo = generateTodo(item);
   todosList.append(todo);
+};
+
+initialTodos.forEach((item) => {
+  renderTodo(item);
 });
 updateTodoCounts();
 
