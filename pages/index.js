@@ -58,6 +58,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   closeModal(addTodoPopup);
   newTodoValidator.resetValidation();
   updateTodoCounts();
+  renderTodo();
 });
 
 function updateTodoCounts() {
