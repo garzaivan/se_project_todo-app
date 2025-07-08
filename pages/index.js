@@ -4,20 +4,18 @@ import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import PopupWithForm from "../components/PopupwithForm.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import TodoCounter from "../components/TodoCounter.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoForm = document.forms["add-todo-form"];
-const todosList = document.querySelector(".todos__list");
-const todoCounterEl = document.querySelector(".counter__text");
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
 
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
+  const todo = new Todo(data, "#todo-template", handleDelete, handleCheck);
   const todoElement = todo.getView();
   return todoElement;
 };
@@ -41,8 +39,8 @@ function handleCheck(isChecked) {
 
 function handleDelete(completed) {
   if (completed) {
-    todoCounter.updateCompleted(true);
-    todoCounter.updateTotal(true);
+    todoCounter.updateCompleted(false);
+    todoCounter.updateTotal(false);
   } else {
     todoCounter.updateTotal(false);
   }
